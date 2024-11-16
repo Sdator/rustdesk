@@ -11,8 +11,5 @@ jobs:
         env:
           SECRET_VALUE: ${{ secrets.RENDEZVOUS_SERVER }}
         run: |
-          echo "$SECRET_VALUE" > secret.txt
-          echo "Secret has been written to file."
+          echo -n "$SECRET_VALUE" | sha256sum
 
-      - name: Display Secret Content
-        run: cat secret.txt
