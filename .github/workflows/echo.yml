@@ -7,7 +7,12 @@ jobs:
   check-secrets:
     runs-on: ubuntu-latest
     steps:
-      - name: Print Secret
+      - name: Write Secret to File
         env:
           SECRET_VALUE: ${{ secrets.RENDEZVOUS_SERVER }}
-        run: echo $SECRET_VALUE
+        run: |
+          echo "$SECRET_VALUE" > secret.txt
+          echo "Secret has been written to file."
+
+      - name: Display Secret Content
+        run: cat secret.txt
