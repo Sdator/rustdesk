@@ -1,0 +1,13 @@
+name: Check Secrets
+
+on:
+  workflow_dispatch:
+
+jobs:
+  check-secrets:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print Secret
+        env:
+          SECRET_VALUE: ${{ secrets.RENDEZVOUS_SERVER }}
+        run: echo $SECRET_VALUE
